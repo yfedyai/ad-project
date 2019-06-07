@@ -8,24 +8,35 @@
                 <v-toolbar-title>Login form</v-toolbar-title>
               </v-toolbar>
               <v-card-text>
-                <v-form>
+                <v-form 
+                    ref="form"
+                    v-model="valid"
+                    validation>
                   <v-text-field 
                     prepend-icon="person" 
-                    name="login" 
-                    label="Login" 
-                    type="text"
+                    name="email" 
+                    label="Email" 
+                    type="email"
+                    :rules="emailRules"
+                    v-model="email"
                   ></v-text-field>
                   <v-text-field 
                     prepend-icon="lock" 
                     name="password" 
                     label="Password" 
                     type="password"
+                    
+                    :rules="paswordRules"
+                    v-model="password"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary">Login</v-btn>
+                <v-btn 
+                    color="primary"
+                    @click="onSubmit"
+                >Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -38,7 +49,22 @@
 export default {
     data() {
         return {
-            
+            email: '',
+            password: '',
+            valid: false,
+            emailRules: [
+                v => !!v || 'E-mail is required',
+                v => /.+@.+/.test(v) || 'E-mail must be valid'  ///validation rules
+            ],
+            paswordRules : [
+                v => !!v || 'Password is required',
+                v => (v && v.length >= 6) || 'Password must be equal or more than 6 characters'
+            ] 
+        }
+    },
+    methods: {
+        onSubmit() {
+
         }
     },
 }
