@@ -51,5 +51,7 @@ export default new Router({
      name:'orders',
      component: Orders
    },
-  ]
+  
+  ],
+  mode: 'history'
 })
