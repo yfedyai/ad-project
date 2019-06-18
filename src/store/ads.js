@@ -35,6 +35,11 @@ export default {
         },
         myAds(state) {
             return state.ads
+        },
+        addById(state){
+            return addId => {
+                return state.ads.find(ad => ad.id === addId)
+            }
         }
     }
 }
