@@ -20,7 +20,7 @@ export default  {
             commit('setLoading', payload)
         },
         setError({commit},payload){
-            commit('serError', payload)
+            commit('setError', payload)
         },
         clearError({commit}, payload) {
             commit('clearError',payload)
