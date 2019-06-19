@@ -73,9 +73,10 @@ export default {
               const ad = {
                   title: this.title,
                   description:this.description,
-                  promo:this.promo
+                  promo:this.promo,
+                  imageSrc:'https://habrastorage.org/webt/tj/zs/el/tjzseld78ryzmf6-cz2wp69tops.jpeg'
               }
-              console.log(ad)
+              this.$store.dispatch('createAd',ad)
               
               
       }
