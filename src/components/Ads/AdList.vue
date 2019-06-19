@@ -12,7 +12,8 @@
                         <v-flex xs-4>
                             <v-card-media
                             :src="ad.imageSrc"
-                            height="160px">
+                            height="160px"
+                            width="200px">
                             </v-card-media>
                         </v-flex>
                         <v-flex xs-8>
