@@ -37,6 +37,12 @@
           >
           <v-icon left>{{link.icon}}</v-icon>{{link.title}}
         </v-btn>
+        <v-btn
+          @click="onLogOut"
+          flat
+          >
+          <v-icon left>{{link.icon}}</v-icon>{{link.title}}
+        </v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <v-content>
@@ -72,6 +78,9 @@ export default {
   methods: {
     closeError(){
       this.$store.dispatch('clearError')
+    },
+    onLogOut() {
+      this.$store.dispatch('logoutUser')
     }
   },
   computed: {
@@ -79,7 +88,6 @@ export default {
       return this.$store.getters.error
     },
     isUserLoggedIn() {
-      console.log(this.$store.getters.isUserLoggedIn)
       return this.$store.getters.isUserLoggedIn
     },
     links() {
