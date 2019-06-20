@@ -80,7 +80,7 @@ export default {
             .then(()=>{
                 this.$router.push('/')
               })
-              .catch(err => {})
+              .catch(() => {})
           }
         }
     },
