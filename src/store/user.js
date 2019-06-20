@@ -51,6 +51,12 @@ export default {
     getters:{
         user (state) {
             return state.user
+        },
+
+        isUserLoggedIn (state) {
+            console.log(state.user)
+            return state.user !== null
+            
         }
     }
 }
