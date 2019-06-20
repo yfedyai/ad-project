@@ -46,6 +46,10 @@ export default {
 
         }
 
+        },
+        autoLoginUser({commit}, payload) {
+            commit('setUser', new User(payload.uid))
+
         }
     },
     getters:{
@@ -54,7 +58,6 @@ export default {
         },
 
         isUserLoggedIn (state) {
-            console.log(state.user)
             return state.user !== null
             
         }
