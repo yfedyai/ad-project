@@ -19,6 +19,19 @@
           </v-list-tile-content>
 
           
+        </v-list-tile >
+        <v-list-tile 
+        v-if="isUserLoggedIn"
+        @click="onLogOut">
+          <v-list-tile-action>
+            <v-icon>exit_to_app</v-icon>
+          </v-list-tile-action>
+
+          <v-list-tile-content>
+            <v-list-tile-title v-text="'Logout'"></v-list-tile-title>
+          </v-list-tile-content>
+
+          
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
@@ -39,9 +52,10 @@
         </v-btn>
         <v-btn
           @click="onLogOut"
+          v-if="isUserLoggedIn"
           flat
           >
-          <v-icon left>{{link.icon}}</v-icon>{{link.title}}
+          <v-icon left>exit_to_app</v-icon>Logout
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -81,6 +95,7 @@ export default {
     },
     onLogOut() {
       this.$store.dispatch('logoutUser')
+      this.$router.push('/')
     }
   },
   computed: {
