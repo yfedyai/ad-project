@@ -43,8 +43,9 @@
             <v-layout row >
               <v-flex xs="12">
                <v-spacer></v-spacer>
-               <v-btn 
-                :disabled="!valid"
+               <v-btn
+                :loading = loading
+                :disabled="!valid || loading "
                 class="success"
                 @click="createAd"
                 >Create Ad</v-btn>
@@ -67,6 +68,11 @@ export default {
         valid:false
     };
   },
+  computed: {
+    loading() {
+      return this.$store.getters.loading
+    }
+  },
   methods: {
       createAd() {
           if (this.$refs.form.validate()) {
@@ -77,8 +83,10 @@ export default {
                   imageSrc:'https://habrastorage.org/webt/tj/zs/el/tjzseld78ryzmf6-cz2wp69tops.jpeg'
               }
               this.$store.dispatch('createAd',ad)
-              
-              
+                .then (() => {
+                  this.$router.push('/list')
+                })
+                .catch (() => {})     
       }
   }
 }
