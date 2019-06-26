@@ -30,18 +30,25 @@ export default {
             
             commit('clearError')
             commit('setLoading', true)
+            
+            const image = payload.image
 
             try {
-                const newAd = new Ad (payload.title, payload.description, getters.user.id, payload.imageSrc, payload.promo) 
-                console.log(newAd)
-                const ad = await fb.database().ref('ads').push(newAd)
+                const newAd = new Ad (payload.title, payload.description, getters.user.id,"" , payload.promo)                
+                const ad = await fb.database().ref('ads').push(newAd)               
+                const imageExt = image.name.slice(image.name.lastIndexOf('.')+1)
+                await fb.storage().ref(`ads/${ad.key}.${imageExt}`).put(image)      //put img to storage   
+                const imageSrc = await fb.storage().ref(`ads/${ad.key}.${imageExt}`).getDownloadURL() //get image URL
+                await fb.database().ref('ads').child(ad.key).update({imageSrc}) //update key value imagesrc in DB
                 commit('setLoading', false)
                 commit('createAd', {
                     ...newAd,
-                    id: ad.key
+                    id:ad.key,
+                    imageSrc
                 })
                 
             } catch(error) {
+                console.log(error)
                 commit('setError', error.message)
                 commit('setLoading', false)
                 throw error
