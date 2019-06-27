@@ -14,10 +14,10 @@
                         <p>{{ad.description}}</p>
                     </v-card-text>
                     <v-card-actions>
-                        <v-spacer>
-                        </v-spacer>
-                        <v-btn class="warning" flat>Edit</v-btn>
+                        <v-spacer></v-spacer>
+                        <!-- <v-btn class="warning" flat>Edit</v-btn> -->
                         <v-btn class="success">Buy</v-btn>
+                        <appDialog></appDialog>
                     </v-card-actions>
                 </v-card>
             </v-flex>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import EditAdModal from './EditAdModal'
 export default {
     props:['id'],
     computed: {
@@ -34,5 +35,8 @@ export default {
             return this.$store.getters.addById(id)
         }
     },
+    components: {
+        appDialog: EditAdModal
+    }
 }
 </script>
