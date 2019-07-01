@@ -16,7 +16,7 @@
                         <v-spacer></v-spacer>
                         <!-- <v-btn class="warning" flat>Edit</v-btn> -->
                         <v-btn class="success">Buy</v-btn>
-                        <appDialog :ad="ad"></appDialog>
+                        <appDialog :ad="ad" v-if="isOwner"></appDialog>
                     </v-card-actions>
                 </v-card>
                 <div v-else class="text-xs-center">
@@ -42,6 +42,9 @@ export default {
         },
         loading() {
             return this.$store.getters.loading
+        },
+        isOwner() {
+            return this.ad.ownerId === this.$store.getters.user.id
         }
     },
     components: {
