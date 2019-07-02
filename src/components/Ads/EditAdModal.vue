@@ -1,6 +1,6 @@
 <template>
     <v-dialog width="400px" v-model="modal">
-        <v-btn class="warning ml-3" slot="activator">Edit</v-btn>
+        <v-btn class="primary ml-2" slot="activator">Edit</v-btn>
         <v-card>
             <v-container>
                 <v-layout>
