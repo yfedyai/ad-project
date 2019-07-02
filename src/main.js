@@ -5,8 +5,10 @@ import App from './App.vue'
 import router from './router/router'
 import store from './store'
 import * as fb from 'firebase'
+import BuyModalComponent from '@/components/shared/BuyModel'
 
 Vue.config.productionTip = false
+Vue.component('app-buy-modal', BuyModalComponent)
 
 new Vue({
   router,
