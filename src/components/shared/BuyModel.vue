@@ -79,7 +79,7 @@ export default {
             if (this.name !== '' && this.name !== '') {
                 this.localLoading = true
                 this.$store.dispatch('createOrder', {
-                    name: this.phone,
+                    name: this.name,
                     phone: this.phone,
                     adId:this.ad.id,
                     ownerId: this.ad.ownerId
